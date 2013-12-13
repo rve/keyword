@@ -6,7 +6,9 @@ import os
 if __name__ == '__main__':
     f = open("./data/Train.csv")
     reader = csv.reader(f)
-    reader.next()
+    reader.next() # title
+    rule = open("./data/label.csv")
+    reader2 = csv.reader(rule)
 
     a = 1
     data = dict()
@@ -20,7 +22,7 @@ if __name__ == '__main__':
                 a += 1
     tags = sorted(data.items(), key = lambda x : -x[1])
         
-    ofile = open("data/label.csv", "wb")
+    ofile = open("data/label_train.csv", "wb")
     writer = csv.writer(ofile,quotechar='"',quoting=csv.QUOTE_ALL)
     writer.writerows(tags)
     ofile.close()

@@ -7,9 +7,6 @@ import re
 #from nltk.corpus import stopwords as sw
 #from nltk.stem.lancaster import LancasterStemmer
 def stem(word):
-    for suffix in ['ing', 'ly', 'ed', 'ious', 'ies', 'ive', 'es', 's', 'ment']:
-        if word.endswith(suffix) and len(word) > len(suffix) + 1:
-            return word[:-len(suffix)]
     return word
 
 def poss_train(train_file,train_write,sw_file):
@@ -136,8 +133,8 @@ if __name__ == '__main__':
         test_write = sys.argv[4]
         sw_file = sys.argv[5]
     else:
-        train_file = './data/Train.csv'
-        train_write = './data/nltk_t.csv'
+        train_file = './data/o1train.csv'
+        train_write = './data/nltk_without_stem.csv'
         test_file = './data/Test.csv'
         test_write = './data/nltk_o.csv'
         sw_file = './data/sw.txt'
@@ -148,5 +145,5 @@ if __name__ == '__main__':
     print "写入测试文件",test_write
     print "停顿词表文件",sw_file
 
-#    poss_train(train_file,train_write,sw_file)
-    poss_test(test_file,test_write,sw_file)
+    poss_train(train_file,train_write,sw_file)
+    #poss_test(test_file,test_write,sw_file)

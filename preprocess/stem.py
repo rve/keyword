@@ -5,7 +5,7 @@ import nltk
 import sys
 import re
 #from nltk.corpus import stopwords as sw
-#from nltk.stem.lancaster import LancasterStemmer
+from nltk.stem.lancaster import LancasterStemmer
 def stem(word):
     for suffix in ['ing', 'ly', 'ed', 'ious', 'ies', 'ive', 'es', 's', 'ment']:
         if word.endswith(suffix) and len(word) > len(suffix) + 1:
@@ -36,7 +36,7 @@ def poss_train(train_file,train_write,sw_file):
     g = lambda x : x not in stopwords
     
     for row in reader:
-        if a%100000 == 0:
+        if a%10000 == 0:
             print a    
         a += 1
         title = row[1].lower()
@@ -53,10 +53,10 @@ def poss_train(train_file,train_write,sw_file):
         title = filter(g,title)
 
         #light stem
-        #st = LancasterStemmer()
-        title = set([stem(word) for word in title])
+        st = LancasterStemmer()
+        title = set([st.stem(word) for word in title])
         body = set(body)
-        body = set([stem(word) for word in body])
+        body = set([st.stem(word) for word in body])
 
         # list to string
         body = ' '.join(body)
@@ -79,16 +79,17 @@ def poss_test(test_file,test_write,sw_file):
     sw = sw.readlines()
     sw = [word.strip() for word in sw]
     
-    #stopwords = sw 
-    stopwords = nltk.corpus.stopwords.words('english')
+    stopwords = sw
     print "停顿词表长度",len(stopwords)
     stopwords = set(stopwords)
 
     g = lambda x : x not in stopwords
     
     for row in reader:
-
-        if a%10000 == 0:
+        if a == 0:
+            a += 1
+            continue
+        if a%1000 == 0:
             print a    
         a += 1
         #if a == 8:
@@ -102,19 +103,19 @@ def poss_test(test_file,test_write,sw_file):
         pattern = r"([a-z])\w+"
         body = nltk.regexp_tokenize(body, pattern)
         title = nltk.regexp_tokenize(title, pattern)
-        #remove stopwords
-        body = filter(g,body)
-        title = filter(g,title)
 
         #light stem
-        title = set([stem(word) for word in title])
-        body = set(body)
-        body = set([stem(word) for word in body])
+        #title = set([stem(word) for word in title])
+        #body = set(body)
+        #body = set([stem(word) for word in body])
 
+        #remove stopwords
+        #body = filter(g,body)
+        #title = filter(g,title)
 
         body = ' '.join(body)
         title = ' '.join(title)
-        t.write('"%s","%s","%s"\n'%(row[0],title,body))
+        t.write('%s , %s \n'%(title,body))
 
 def usage():
     """
@@ -137,9 +138,9 @@ if __name__ == '__main__':
         sw_file = sys.argv[5]
     else:
         train_file = './data/Train.csv'
-        train_write = './data/nltk_t.csv'
+        train_write = './data/o3train.csv'
         test_file = './data/Test.csv'
-        test_write = './data/nltk_o.csv'
+        test_write = './data/nltk_test.csv'
         sw_file = './data/sw.txt'
     
     print "训练文件",train_file
@@ -148,5 +149,5 @@ if __name__ == '__main__':
     print "写入测试文件",test_write
     print "停顿词表文件",sw_file
 
-#    poss_train(train_file,train_write,sw_file)
-    poss_test(test_file,test_write,sw_file)
+    poss_train(train_file,train_write,sw_file)
+#    poss_test(test_file,test_write,sw_file)
