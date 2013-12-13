@@ -10,7 +10,7 @@ if __name__ == '__main__':
     reader = csv.reader(ifile)
 
     a = 0
-    sample_size = 3000
+    sample_size = 3
 
     train = []
 
