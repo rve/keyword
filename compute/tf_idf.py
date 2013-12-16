@@ -32,8 +32,17 @@ if __name__ == '__main__':
         if nrows % 1000 == 0:
             print ('iter1: ',nrows)
         nrows += 1
-    a = 0
+        
     computed = dict()
+        #remove low freq tags
+    thres = 10
+    for k, v in docs.items():
+        if v < thres:
+            docs[k] = 0
+            computed[k] = 1
+        
+    a = 0
+
     rfile.close()
     rfile = open("./data/Test.csv")
     reader = csv.reader(rfile)
