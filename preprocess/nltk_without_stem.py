@@ -4,6 +4,7 @@ import csv
 import nltk
 import sys
 import re
+from nltk import RegexpTokenizer
 #from nltk.corpus import stopwords as sw
 #from nltk.stem.lancaster import LancasterStemmer
 def stem(word):
@@ -41,9 +42,12 @@ def poss_train(train_file,train_write,sw_file):
         body = nltk.clean_html(row[2].lower())
         
         #word tokenize
-        pattern = r"([a-z])\w+"
-        body = nltk.regexp_tokenize(body, pattern)
-        title = nltk.regexp_tokenize(title, pattern)
+        #pattern = r"([a-z])\w+"
+        #body = nltk.regexp_tokenize(body, pattern)
+        #title = nltk.regexp_tokenize(title, pattern)
+        body = body.split()
+        title = title.split()
+
         
         #remove stopwords
         body = filter(g,body)
@@ -133,7 +137,7 @@ if __name__ == '__main__':
         test_write = sys.argv[4]
         sw_file = sys.argv[5]
     else:
-        train_file = './data/o1train.csv'
+        train_file = './data/Test.csv'
         train_write = './data/nltk_without_stem.csv'
         test_file = './data/Test.csv'
         test_write = './data/nltk_o.csv'

@@ -13,6 +13,7 @@ o1train: remove code and same (2.8G)
 o2train: light stem (1.2G)
 o3train: nltk stem (1.1G)
 o4train: nltk without stem
+o5tran: nltk without stem, remove rare words
 
 otest: original test
 

@@ -4,7 +4,7 @@ import csv
 import os
 
 if __name__ == '__main__':
-    f = open("./data/Train.csv")
+    f = open("./data/otrain.csv")
     reader = csv.reader(f)
     reader.next()
 
