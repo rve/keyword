@@ -6,17 +6,17 @@ import math
 import shelve
 
 if __name__ == '__main__':
-    rfile = open("./data/o2test.csv")
+    rfile = open("./data/stest.csv")
     reader = csv.reader(rfile)
     #reader.next() # title
-    new_t = 'data/simple.csv'
+    new_t = 'data/test_ans.csv'
     writer = open(new_t, "wb")
     rlabel = open("./data/label.csv")
     flabel = csv.reader(rlabel)
     labels = list()
     for row in flabel:
         labels.append(row[0])
-    cutvalue = 600
+    cutvalue = 200
     labels =labels[:cutvalue]
    
     nrows = 0
@@ -43,7 +43,7 @@ if __name__ == '__main__':
                 cnt += 1
                 ans.append(label)
 
-        writer.write('%s,"%s"\n' % (docid,' '.join(ans)))
+        writer.write('"%s","%s"\n' % (docid,' '.join(ans)))
         
         if nrows % 10000 == 0:
             print ('iter1: ',nrows)

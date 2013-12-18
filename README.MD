@@ -13,9 +13,12 @@ o1train: remove code and same (2.8G)
 o2train: light stem (1.2G)
 o3train: nltk stem (1.1G)
 o4train: nltk without stem
-o5tran: nltk without stem, remove rare words
+o5train: nltk without stem, remove rare words
+o6train: not remove same, only remove code (new startpoint)
 
 otest: original test
+o1test: remove code
+o2test: remove code, nltk without stem
 
 F1:
 ==== 10000 data ====

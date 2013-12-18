@@ -41,25 +41,24 @@ if __name__ == '__main__':
         a += 1
         tdict[row[1]] = row[3]
         if a % 20000 == 0:
-            print('iter1: reading train.csv '+ str(a))
+            print(a)
     f.close()
-    tdict.sync()
     f3.write('"Id","tags"\n')
-    first_line_num = 6034196
+    first_line_num = 6034195
     if TEST == 1:
         first_line_num = 0
     a=0
     for row in test_reader:
         a+=1
         if a % 20000 == 0:
-            print('iter2: '+ str(a))
+            print(a)
         if row[1] in tdict:
             f3.write('%s,"%s"\n' % (row[0],tdict[row[1]]))
         else:
             line_num = int(row[0]) - first_line_num
             ans = real_file[line_num]
             #f3.write('%s,%s\n' % (row[0],'"c# java php javascript android"'))
-            f3.write('%s' % ans)
+            f3.write('%s\n' % ans)
 
     f2.close()
     f3.close()

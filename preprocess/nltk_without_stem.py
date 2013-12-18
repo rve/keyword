@@ -28,14 +28,14 @@ def poss_train(train_file,train_write,sw_file):
     
     #stopwords = sw  # use nltk stopwords
     stopwords = nltk.corpus.stopwords.words('english')
-    print "停顿词表长度",len(stopwords)
+    print("stopword lens",len(stopwords))
     stopwords = set(stopwords)
 
     g = lambda x : x not in stopwords
     
     for row in reader:
-        if a%100000 == 0:
-            print a    
+        if a%10000 == 0:
+            print(a)
         a += 1
         title = row[1].lower()
         #clean html
@@ -80,7 +80,6 @@ def poss_test(test_file,test_write,sw_file):
     
     #stopwords = sw 
     stopwords = nltk.corpus.stopwords.words('english')
-    print "停顿词表长度",len(stopwords)
     stopwords = set(stopwords)
 
     g = lambda x : x not in stopwords
@@ -128,6 +127,7 @@ def usage():
 
 
 if __name__ == '__main__':
+    TEST = 0
     if len(sys.argv) == 6:
         usage()
         train_file = sys.argv[1]
@@ -141,6 +141,9 @@ if __name__ == '__main__':
         test_file = './data/Test.csv'
         test_write = './data/nltk_o.csv'
         sw_file = './data/sw.txt'
+        if TEST == 1:
+            train_file = './data/strain.csv'
+            test_file = './data/stest.csv'
     
     print "训练文件",train_file
     print "测试文件",test_file
@@ -148,5 +151,5 @@ if __name__ == '__main__':
     print "写入测试文件",test_write
     print "停顿词表文件",sw_file
 
-    poss_train(train_file,train_write,sw_file)
-    #poss_test(test_file,test_write,sw_file)
+    #poss_train(train_file,train_write,sw_file)
+    poss_test(test_file,test_write,sw_file)

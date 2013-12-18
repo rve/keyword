@@ -6,7 +6,7 @@
 import csv
 
 def extract_train(num):
-    ifile = open("data/o2train.csv","rb")
+    ifile = open("data/o6train.csv","rb")
     reader = csv.reader(ifile)
 
     a = 0
@@ -25,12 +25,12 @@ def extract_train(num):
 
     #train = [['"%s"' % w for w in word] for word in train]
 
-    ofile = open("data/Train.csv", "wb")
+    ofile = open("data/strain.csv", "wb")
     writer = csv.writer(ofile,quotechar='"',quoting=csv.QUOTE_ALL)
     writer.writerows(train)
     ofile.close()
 def extract_test(num):
-    ifile = open("data/o1train.csv","rb")
+    ifile = open("data/o6train.csv","rb")
     reader = csv.reader(ifile)
 
     a = 0
@@ -49,14 +49,14 @@ def extract_test(num):
 
     #train = [['"%s"' % w for w in word] for word in train]
 
-    ofile = open("data/Test.csv", "wb")
+    ofile = open("data/stest.csv", "wb")
     writer = csv.writer(ofile,quotechar='"',quoting=csv.QUOTE_ALL)
     writer.writerows(train)
     ofile.close()
  
 if __name__ == '__main__':
-    ntrain = 10000
-    ntest =10000
-    #extract_train(ntrain)
+    ntrain = 30000
+    ntest = 10000
+    extract_train(ntrain)
     extract_test(ntest)
     
