@@ -17,6 +17,15 @@ o5tran: nltk without stem, remove rare words
 
 otest: original test
 
+F1:
+==== 10000 data ====
+top5: 0.83
+top 200 label match with freq prio: 0.112 (label corrupted -- should use new nltk)
+top 2000 ~ : 0.121
+top 2000 label math with freq prio : 0.243 (using new label from 10000data)
+top 400 ~ : 0.250
+top 200 ~ : 0.243
+
 Todo:
 1. also remove <code>(.?*)</code> multiline using regex
 2. title priority in tf-idf

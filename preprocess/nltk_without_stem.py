@@ -43,12 +43,10 @@ def poss_train(train_file,train_write,sw_file):
         
         #word tokenize
         #pattern = r"([a-z])\w+"
-        #body = nltk.regexp_tokenize(body, pattern)
-        #title = nltk.regexp_tokenize(title, pattern)
-        body = body.split()
-        title = title.split()
-
-        
+        pattern = r"([a-z\.\#\-])+"
+        body = nltk.regexp_tokenize(body, pattern)
+        title = nltk.regexp_tokenize(title, pattern)
+         
         #remove stopwords
         body = filter(g,body)
         title = filter(g,title)
@@ -100,7 +98,8 @@ def poss_test(test_file,test_write,sw_file):
         body = nltk.clean_html(row[2].lower())
         
         #work tokenize
-        pattern = r"([a-z])\w+"
+        #pattern = r"([a-z])\w+"
+        pattern = r"([a-z\.\#\-])+"
         body = nltk.regexp_tokenize(body, pattern)
         title = nltk.regexp_tokenize(title, pattern)
         #remove stopwords

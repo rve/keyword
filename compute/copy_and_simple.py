@@ -49,6 +49,7 @@ if __name__ == '__main__':
             print a
     f.close()
     f3.write('"Id","tags"\n')
+    first_line_num = 0 # todo
     a=0
     for row in test_reader:
         a+=1
@@ -57,7 +58,11 @@ if __name__ == '__main__':
         if row[1] in tdict:
             f3.write('%s,"%s"\n' % (row[0],tdict[row[1]]))
         else:
-            f3.write('%s,%s\n' % (row[0],'"c# java php javascript android"'))
+            line_num = int(row[0]) - first_line_num
+            ans = real_file[line_num]
+            #f3.write('%s,%s\n' % (row[0],'"c# java php javascript android"'))
+            f3.write('%s\n' % ans)
+            
 
     f2.close()
     f3.close()
