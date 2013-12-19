@@ -16,7 +16,7 @@ if __name__ == '__main__':
     labels = list()
     for row in flabel:
         labels.append(row[0])
-    cutvalue = 600
+    cutvalue = 600 
     labels =labels[:cutvalue]
    
     nrows = 0

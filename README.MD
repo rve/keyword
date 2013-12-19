@@ -15,6 +15,7 @@ o3train: nltk stem (1.1G)
 o4train: nltk without stem
 o5train: nltk without stem, remove rare words
 o6train: not remove same, only remove code (new startpoint)
+o7train: remove code and same , new nltk for gensim
 
 otest: original test
 o1test: remove code
@@ -28,6 +29,10 @@ top 2000 ~ : 0.121
 top 2000 label math with freq prio : 0.243 (using new label from 10000data)
 top 400 ~ : 0.250
 top 200 ~ : 0.243
+
+=== all data ====
+top 600: 0.679
+top 2000: 0.673
 
 Todo:
 1. also remove <code>(.?*)</code> multiline using regex

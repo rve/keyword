@@ -136,7 +136,7 @@ if __name__ == '__main__':
         test_write = sys.argv[4]
         sw_file = sys.argv[5]
     else:
-        train_file = './data/Test.csv'
+        train_file = './data/o1train.csv'
         train_write = './data/nltk_without_stem.csv'
         test_file = './data/Test.csv'
         test_write = './data/nltk_o.csv'
@@ -151,5 +151,5 @@ if __name__ == '__main__':
     print "写入测试文件",test_write
     print "停顿词表文件",sw_file
 
-    #poss_train(train_file,train_write,sw_file)
-    poss_test(test_file,test_write,sw_file)
+    poss_train(train_file,train_write,sw_file)
+    #poss_test(test_file,test_write,sw_file)

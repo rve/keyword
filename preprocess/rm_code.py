@@ -5,7 +5,7 @@ import os
 import re
 
 if __name__ == '__main__':
-    f = open("./data/Train.csv")
+    f = open("./data/otrain.csv")
     reader = csv.reader(f)
     reader.next() # title
     new_t = 'data/rm_code_t.csv'
