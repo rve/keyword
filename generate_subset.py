@@ -6,7 +6,7 @@
 import csv
 
 def extract_train(num):
-    ifile = open("data/o6train.csv","rb")
+    ifile = open("data/o1train.csv","rb")
     reader = csv.reader(ifile)
 
     a = 0
@@ -30,7 +30,7 @@ def extract_train(num):
     writer.writerows(train)
     ofile.close()
 def extract_test(num):
-    ifile = open("data/o6train.csv","rb")
+    ifile = open("data/o1train.csv","rb")
     reader = csv.reader(ifile)
 
     a = 0

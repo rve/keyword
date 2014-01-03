@@ -35,48 +35,23 @@ if __name__ == '__main__':
         words = text.split()
         ans = list()
         cnt = 0
-        for label in labels:
+        dt = dict()
+        for label in words:
             label = label.lower()
             if cnt >= 5:
                 break
-            if label in words:
+            dt.setdefault(label,0)
+            if dt[label] == 0 and label in labels:
+                dt[label] = 1
                 cnt += 1
                 ans.append(label)
 
-        writer.write('%s,"%s"\n' % (docid,' '.join(ans)))
+        writer.write('%s\n' % (' '.join(ans)))
         
         if nrows % 10000 == 0:
             print ('iter1: ',nrows)
         nrows += 1
         
-#       top5 = tf_idf[:5]
-#       ans = [item[1] for item in top5]
-#       prio = [item[0] for item in top5]
-        
-        #writer.write('"%d","%s","%s"\n' % (docid,' '.join(ans), repr(prio)))
-
     writer.close()
     rfile.close()
     rlabel.close()
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

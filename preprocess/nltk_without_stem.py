@@ -42,8 +42,7 @@ def poss_train(train_file,train_write,sw_file):
         body = nltk.clean_html(row[2].lower())
         
         #word tokenize
-        #pattern = r"([a-z])\w+"
-        pattern = r"([a-z\.\#\-])+"
+        pattern = r"(\.?[a-z][a-z0-9\+\.\#\-]+[a-z0-9\+\#])"
         body = nltk.regexp_tokenize(body, pattern)
         title = nltk.regexp_tokenize(title, pattern)
          
@@ -87,7 +86,7 @@ def poss_test(test_file,test_write,sw_file):
     for row in reader:
 
         if a%10000 == 0:
-            print a    
+            print(a)
         a += 1
         #if a == 8:
         #    sys.exit(1)
@@ -97,8 +96,7 @@ def poss_test(test_file,test_write,sw_file):
         body = nltk.clean_html(row[2].lower())
         
         #work tokenize
-        #pattern = r"([a-z])\w+"
-        pattern = r"([a-z\.\#\-])+"
+        pattern = r"(\.?[a-z][a-z0-9\+\.\#\-]+[a-z0-9\+\#])"
         body = nltk.regexp_tokenize(body, pattern)
         title = nltk.regexp_tokenize(title, pattern)
         #remove stopwords
@@ -138,7 +136,7 @@ if __name__ == '__main__':
     else:
         train_file = './data/o1train.csv'
         train_write = './data/nltk_without_stem.csv'
-        test_file = './data/Test.csv'
+        test_file = './data/o1test.csv'
         test_write = './data/nltk_o.csv'
         sw_file = './data/sw.txt'
         if TEST == 1:
@@ -151,5 +149,5 @@ if __name__ == '__main__':
     print "写入测试文件",test_write
     print "停顿词表文件",sw_file
 
-    poss_train(train_file,train_write,sw_file)
-    #poss_test(test_file,test_write,sw_file)
+    #poss_train(train_file,train_write,sw_file)
+    poss_test(test_file,test_write,sw_file)

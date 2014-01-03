@@ -20,20 +20,23 @@ o7train: remove code and same , new nltk for gensim
 otest: original test
 o1test: remove code
 o2test: remove code, nltk without stem
+o4test: +new nltk
+
+strain: 30000data, remove code
+s2train: +nltk
+
+stest: 10000data ,remove code
+s2test: +nltk
+s3test: +tf-idf resorted
 
 F1:
 ==== 10000 data ====
-top5: 0.83
-top 200 label match with freq prio: 0.112 (label corrupted -- should use new nltk)
-top 2000 ~ : 0.121
 top 2000 label math with freq prio : 0.243 (using new label from 10000data)
-top 400 ~ : 0.250
-top 200 ~ : 0.243
+tf-idf with labels : 0.093
+tf-idf with text+labels: 0.06  233333
+tf-idf with all labels: 0.086  233333
+tf-idf with own tags: 0.27
 
 === all data ====
 top 600: 0.679
 top 2000: 0.673
-
-Todo:
-1. also remove <code>(.?*)</code> multiline using regex
-2. title priority in tf-idf
